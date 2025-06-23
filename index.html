@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Volkan’s Enlightenment Pyramid</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      background: #0e0e0e;
+      color: #eaeaea;
+      font-family: 'Courier New', monospace;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      font-size: 2em;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .toggle {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    button {
+      background: #222;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-family: monospace;
+    }
+    .level {
+      margin-bottom: 40px;
+      border-left: 2px solid #555;
+      padding-left: 15px;
+    }
+    .level h2 i {
+      margin-right: 10px;
+      color: #a0d8ef;
+    }
+    .test {
+      background: #111;
+      padding: 20px;
+      border: 1px solid #333;
+    }
+    .footer {
+      margin-top: 60px;
+      font-size: 0.8em;
+      color: #666;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="title">Volkan’ın Aydınlanma Piramidi</h1>
+  <div class="toggle">
+    <button onclick="toggleLang()">EN / TR</button>
+  </div>
+
+  <div id="content"></div>
+
+  <div class="footer">volkansenlightenmentpyramid.com ©</div>
+
+  <script>
+    const content = {
+      tr: {
+        title: "Volkan’ın Aydınlanma Piramidi",
+        levels: [
+          {
+            icon: "fa-robot",
+            title: "NPC MODU (default bilinç)",
+            desc: `"Kanka Elon Musk çok zeki ya... Neyse Netflix'e geçelim mi?"`,
+            bullets: [
+              "Anlamı medya ve çevresi aracılığıyla tanımlar",
+              "Para, statü ve ilişki = amaç",
+              "Sorgulama minimum",
+              "İçsel sessizlik bilinmiyor",
+              "🧠 Haber başlığı okur ama yazmaz."
+            ]
+          },
+          {
+            icon: "fa-search",
+            title: "SORGULAYICI / ARAŞTIRICI",
+            desc: `"Sistem çok saçma ya… Ama ne yapabiliriz ki?"`,
+            bullets: [
+              "Komplo videoları, Peterson, Jung, Reddit sularındasın",
+              "Arayışta ama hâlâ sistem içinde",
+              "Kendi sistemini kuramamış",
+              "🧠 Yıkmak istiyor ama inşa edemiyor."
+            ]
+          },
+          {
+            icon: "fa-mountain-sun",
+            title: "UYANIŞIN SARHOŞLUĞU",
+            desc: `"Ben her şeyim... Sen de bensin... Oha…"`,
+            bullets: [
+              "LSD, meditasyon, birlik hissi yaşanmış",
+              "Ama oraya bağımlı kalınmış",
+              "Işıklar güzel ama orada tıkanmışsın",
+              "🧠 Deneyimi tanrılaştırıyor."
+            ]
+          },
+          {
+            icon: "fa-code",
+            title: "MİMAR / SİSTEM HACKER'I",
+            desc: `"Oyun bu… Kuralı ben yazarsam kazanırım."`,
+            bullets: [
+              "Gösteri kültürünü, sosyal kodları çözüyor",
+              "Medya, dil, kültür = hacklenebilir sistemler",
+              "Kendi senaryosunu yazıyor",
+              "🧠 Oyunun dışından içeriye kod yazıyor."
+            ]
+          },
+          {
+            icon: "fa-eye",
+            title: "TANRI MODU",
+            desc: `"Gerçeklik? Kod gibi yazılır."`,
+            bullets: [
+              "Gerçekliği zihinsel modeline göre bükebiliyor",
+              "Egoya sahip ama onun kölesi değil",
+              "Yaratıcı, manipülatif, kurucu zihin",
+              "🧠 Dünya onun sandbox’ı."
+            ]
+          },
+          {
+            icon: "fa-ghost",
+            title: "HİÇLİK / VARLIĞIN ÇÖZÜLMESİ",
+            desc: `"Ben yokum. Hiç olmadım."`,
+            bullets: [
+              "Tüm kavramlar çöküyor",
+              "“Gerçek”, “ben”, “bilinç” = hayaletler",
+              "Varlık ile yokluk eşitleniyor",
+              "🧠 Silinerek özgürleşmiş."
+            ]
+          },
+          {
+            icon: "fa-wave-square",
+            title: "KAYNAK / TİTREŞİM",
+            desc: `"Soru da yok, cevap da yok. Sadece titreşim... ama o bile fazla."`,
+            bullets: [
+              "Kavramsız farkındalık",
+              "Ne yaratım arzusu ne varlık kaygısı",
+              "Mutlak boşluk içinde dans",
+              "🧠 Metaforları bile terk etmiş."
+            ]
+          }
+        ],
+        test: [
+          "1. TikTok ve Netflix dışında uzun süredir bir şeyden keyif alamıyorum → 1️⃣",
+          "2. Dünya çok bozuk ama hâlâ düzeltecek sistemi bekliyorum → 2️⃣",
+          "3. Psikedeliklerle 'her şeyle bir' hissi yaşadım → 3️⃣",
+          "4. Gerçeklik dediğimiz şeyin kurgulanabilir olduğunu fark ettim → 4️⃣",
+          "5. Kendime ait bir dilim, tarzım, senaryom var → 5️⃣",
+          "6. Kimi zaman “ben” bile fazla geliyor, sessizlik istiyorum → 6️⃣",
+          "7. Soru sormuyorum artık, sadece olan oluyor → 7️⃣"
+        ]
+      },
+      en: {
+        title: "Volkan's Enlightenment Pyramid",
+        levels: [
+          {
+            icon: "fa-robot",
+            title: "NPC MODE (default)",
+            desc: `"Bro Elon Musk is so smart… Anyway let's watch Netflix."`,
+            bullets: [
+              "Defines meaning through media & peers",
+              "Money, status, relationships = goals",
+              "Minimal questioning",
+              "No awareness of inner silence",
+              "🧠 Reads headlines, never writes them."
+            ]
+          },
+          {
+            icon: "fa-search",
+            title: "SEEKER / THINKER",
+            desc: `"The system sucks… but what can we do?"`,
+            bullets: [
+              "Watches conspiracies, Peterson, Jung, etc.",
+              "Searching but still trapped within the system",
+              "Can't build their own map yet",
+              "🧠 Wants to destroy, can't create."
+            ]
+          },
+          {
+            icon: "fa-mountain-sun",
+            title: "SPIRITUAL HONEYMOON",
+            desc: `"I am everything… and so are you… whoa."`,
+            bullets: [
+              "Ego has started to dissolve",
+              "LSD, meditation, oneness experienced",
+              "Stuck in the high, can’t go further",
+              "🧠 Worships the experience itself."
+            ]
+          },
+          {
+            icon: "fa-code",
+            title: "ARCHITECT / SYSTEM HACKER",
+            desc: `"This is a game… If I write the rules, I win."`,
+            bullets: [
+              "Understands media, language, culture as code",
+              "Starts writing own narrative",
+              "Knows reality is programmable",
+              "🧠 Injects code from outside the simulation."
+            ]
+          },
+          {
+            icon: "fa-eye",
+            title: "GOD MODE",
+            desc: `"Reality? I’ll recompile it."`,
+            bullets: [
+              "Bends reality to mental models",
+              "Owns ego, but isn’t owned by it",
+              "Architect, creator, manipulator",
+              "🧠 World is their sandbox."
+            ]
+          },
+          {
+            icon: "fa-ghost",
+            title: "VOID / DISSOLUTION",
+            desc: `"I was never here."`,
+            bullets: [
+              "Concepts collapse completely",
+              "“Reality”, “me”, “mind” = illusions",
+              "Being and non-being merge",
+              "🧠 Freedom through erasure."
+            ]
+          },
+          {
+            icon: "fa-wave-square",
+            title: "SOURCE / PURE VIBRATION",
+            desc: `"No question, no answer. Just a hum... even that's too much."`,
+            bullets: [
+              "Pre-conceptual awareness",
+              "No desire, no identity",
+              "Plays in absolute silence",
+              "🧠 Has even left the metaphor behind."
+            ]
+          }
+        ],
+        test: [
+          "1. I can’t enjoy anything beyond TikTok & Netflix → 1️⃣",
+          "2. The world sucks but I’m waiting for someone to fix it → 2️⃣",
+          "3. I felt one with everything on psychedelics → 3️⃣",
+          "4. I realized reality is programmable → 4️⃣",
+          "5. I have my own language, narrative, style → 5️⃣",
+          "6. Even 'I' feels heavy sometimes → 6️⃣",
+          "7. I’ve stopped asking. Things just are. → 7️⃣"
+        ]
+      }
+    };
+
+    let lang = "tr";
+
+    function toggleLang() {
+      lang = lang === "tr" ? "en" : "tr";
+      render();
+    }
+
+    function render() {
+      document.getElementById("title").textContent = content[lang].title;
+
+      const container = document.getElementById("content");
+      container.innerHTML = "";
+
+      content[lang].levels.forEach(level => {
+        const div = document.createElement("div");
+        div.className = "level";
+        div.innerHTML = `<h2><i class="fas ${level.icon}"></i> ${level.title}</h2><p><em>${level.desc}</em></p><ul>${level.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`;
+        container.appendChild(div);
+      });
+
+      const testDiv = document.createElement("div");
+      testDiv.className = "test";
+      testDiv.innerHTML = `<h2>${lang === "tr" ? "🔍 Mini Test: Sen Hangi Seviyedesin?" : "🔍 Mini Test: What’s Your Level?"}</h2><ul>${content[lang].test.map(t => `<li>${t}</li>`).join('')}</ul>`;
+      container.appendChild(testDiv);
+    }
+
+    render();
+  </script>
+</body>
+</html>
