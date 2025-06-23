@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Volkan’s Enlightenment Pyramid</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       background: #0e0e0e;
@@ -36,9 +35,12 @@
       border-left: 2px solid #555;
       padding-left: 15px;
     }
-    .level h2 i {
-      margin-right: 10px;
-      color: #a0d8ef;
+    .level h2 {
+      margin-bottom: 5px;
+    }
+    .level ul {
+      padding-left: 20px;
+      margin-top: 5px;
     }
     .test {
       background: #111;
@@ -69,8 +71,7 @@
         title: "Volkan’ın Aydınlanma Piramidi",
         levels: [
           {
-            icon: "fa-robot",
-            title: "NPC MODU (default bilinç)",
+            title: "1. NPC MODU (default bilinç)",
             desc: `"Kanka Elon Musk çok zeki ya... Neyse Netflix'e geçelim mi?"`,
             bullets: [
               "Anlamı medya ve çevresi aracılığıyla tanımlar",
@@ -81,8 +82,7 @@
             ]
           },
           {
-            icon: "fa-search",
-            title: "SORGULAYICI / ARAŞTIRICI",
+            title: "2. SORGULAYICI / ARAŞTIRICI",
             desc: `"Sistem çok saçma ya… Ama ne yapabiliriz ki?"`,
             bullets: [
               "Komplo videoları, Peterson, Jung, Reddit sularındasın",
@@ -92,8 +92,7 @@
             ]
           },
           {
-            icon: "fa-mountain-sun",
-            title: "UYANIŞIN SARHOŞLUĞU",
+            title: "3. UYANIŞIN SARHOŞLUĞU",
             desc: `"Ben her şeyim... Sen de bensin... Oha…"`,
             bullets: [
               "LSD, meditasyon, birlik hissi yaşanmış",
@@ -103,8 +102,7 @@
             ]
           },
           {
-            icon: "fa-code",
-            title: "MİMAR / SİSTEM HACKER'I",
+            title: "4. MİMAR / SİSTEM HACKER'I",
             desc: `"Oyun bu… Kuralı ben yazarsam kazanırım."`,
             bullets: [
               "Gösteri kültürünü, sosyal kodları çözüyor",
@@ -114,8 +112,7 @@
             ]
           },
           {
-            icon: "fa-eye",
-            title: "TANRI MODU",
+            title: "5. TANRI MODU",
             desc: `"Gerçeklik? Kod gibi yazılır."`,
             bullets: [
               "Gerçekliği zihinsel modeline göre bükebiliyor",
@@ -125,8 +122,7 @@
             ]
           },
           {
-            icon: "fa-ghost",
-            title: "HİÇLİK / VARLIĞIN ÇÖZÜLMESİ",
+            title: "6. HİÇLİK / VARLIĞIN ÇÖZÜLMESİ",
             desc: `"Ben yokum. Hiç olmadım."`,
             bullets: [
               "Tüm kavramlar çöküyor",
@@ -136,8 +132,7 @@
             ]
           },
           {
-            icon: "fa-wave-square",
-            title: "KAYNAK / TİTREŞİM",
+            title: "7. KAYNAK / TİTREŞİM",
             desc: `"Soru da yok, cevap da yok. Sadece titreşim... ama o bile fazla."`,
             bullets: [
               "Kavramsız farkındalık",
@@ -161,8 +156,7 @@
         title: "Volkan's Enlightenment Pyramid",
         levels: [
           {
-            icon: "fa-robot",
-            title: "NPC MODE (default)",
+            title: "1. NPC MODE (default)",
             desc: `"Bro Elon Musk is so smart… Anyway let's watch Netflix."`,
             bullets: [
               "Defines meaning through media & peers",
@@ -173,8 +167,7 @@
             ]
           },
           {
-            icon: "fa-search",
-            title: "SEEKER / THINKER",
+            title: "2. SEEKER / THINKER",
             desc: `"The system sucks… but what can we do?"`,
             bullets: [
               "Watches conspiracies, Peterson, Jung, etc.",
@@ -184,8 +177,7 @@
             ]
           },
           {
-            icon: "fa-mountain-sun",
-            title: "SPIRITUAL HONEYMOON",
+            title: "3. SPIRITUAL HONEYMOON",
             desc: `"I am everything… and so are you… whoa."`,
             bullets: [
               "Ego has started to dissolve",
@@ -195,8 +187,7 @@
             ]
           },
           {
-            icon: "fa-code",
-            title: "ARCHITECT / SYSTEM HACKER",
+            title: "4. ARCHITECT / SYSTEM HACKER",
             desc: `"This is a game… If I write the rules, I win."`,
             bullets: [
               "Understands media, language, culture as code",
@@ -206,8 +197,7 @@
             ]
           },
           {
-            icon: "fa-eye",
-            title: "GOD MODE",
+            title: "5. GOD MODE",
             desc: `"Reality? I’ll recompile it."`,
             bullets: [
               "Bends reality to mental models",
@@ -217,8 +207,7 @@
             ]
           },
           {
-            icon: "fa-ghost",
-            title: "VOID / DISSOLUTION",
+            title: "6. VOID / DISSOLUTION",
             desc: `"I was never here."`,
             bullets: [
               "Concepts collapse completely",
@@ -228,8 +217,7 @@
             ]
           },
           {
-            icon: "fa-wave-square",
-            title: "SOURCE / PURE VIBRATION",
+            title: "7. SOURCE / PURE VIBRATION",
             desc: `"No question, no answer. Just a hum... even that's too much."`,
             bullets: [
               "Pre-conceptual awareness",
@@ -267,17 +255,4 @@
       content[lang].levels.forEach(level => {
         const div = document.createElement("div");
         div.className = "level";
-        div.innerHTML = `<h2><i class="fas ${level.icon}"></i> ${level.title}</h2><p><em>${level.desc}</em></p><ul>${level.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`;
-        container.appendChild(div);
-      });
-
-      const testDiv = document.createElement("div");
-      testDiv.className = "test";
-      testDiv.innerHTML = `<h2>${lang === "tr" ? "🔍 Mini Test: Sen Hangi Seviyedesin?" : "🔍 Mini Test: What’s Your Level?"}</h2><ul>${content[lang].test.map(t => `<li>${t}</li>`).join('')}</ul>`;
-      container.appendChild(testDiv);
-    }
-
-    render();
-  </script>
-</body>
-</html>
+        div.inner
