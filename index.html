@@ -12,56 +12,77 @@
       padding: 40px 20px;
       max-width: 800px;
       margin: auto;
+      position: relative;
+      overflow-x: hidden;
     }
     h1 {
       font-size: 2em;
       text-align: center;
       margin-bottom: 10px;
+      z-index: 10;
+      position: relative;
     }
     .toggle {
       text-align: center;
       margin-bottom: 30px;
+      z-index: 10;
+      position: relative;
     }
-    button {
+    select {
       background: #222;
       color: #fff;
       border: 1px solid #444;
       padding: 6px 12px;
-      cursor: pointer;
       font-family: monospace;
+      z-index: 10;
+      position: relative;
     }
     .level {
       margin-bottom: 40px;
       border-left: 2px solid #555;
       padding-left: 15px;
-    }
-    .level h2 {
-      margin-bottom: 5px;
-    }
-    .level ul {
-      padding-left: 20px;
-      margin-top: 5px;
+      z-index: 10;
+      position: relative;
     }
     .test {
       background: #111;
       padding: 20px;
       border: 1px solid #333;
+      z-index: 10;
+      position: relative;
     }
     .footer {
       margin-top: 60px;
       font-size: 0.8em;
       color: #666;
       text-align: center;
+      z-index: 10;
+      position: relative;
+    }
+    /* Fullscreen GIF overlay for Instagram addict */
+    #instaOverlay {
+      display: none;
+      position: fixed;
+      top:0; left:0; width: 100vw; height: 100vh;
+      background: black url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExazJrM2hnbnI0Y3ltbzE4YzhxNzViMW0xczk2dTI0eHlxMHhxb3djNiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3ohs84aXbLiiU0U1rC/giphy.gif') center center no-repeat;
+      background-size: cover;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
   <h1 id="title">Volkan’ın Aydınlanma Piramidi</h1>
   <div class="toggle">
-    <button onclick="toggleLang()">EN / TR</button>
+    <select id="langSelect" onchange="changeLang()">
+      <option value="tr">Türkçe</option>
+      <option value="en">English</option>
+      <option value="insta">Instagram Addict</option>
+    </select>
   </div>
 
   <div id="content"></div>
+
+  <div id="instaOverlay"></div>
 
   <div class="footer">volkansenlightenmentpyramid.com ©</div>
 
@@ -236,26 +257,44 @@
           "6. Even 'I' feels heavy sometimes → 6️⃣",
           "7. I’ve stopped asking. Things just are. → 7️⃣"
         ]
+      },
+      insta: {
+        title: "Instagram Addict Mode",
+        levels: [],
+        test: []
       }
     };
 
     let lang = "tr";
 
-    function toggleLang() {
-      lang = lang === "tr" ? "en" : "tr";
-      render();
+    function changeLang() {
+      lang = document.getElementById("langSelect").value;
+      const instaOverlay = document.getElementById("instaOverlay");
+      if (lang === "insta") {
+        instaOverlay.style.display = "block";
+        document.getElementById("content").style.display = "none";
+        document.getElementById("title").style.visibility = "hidden";
+        document.querySelector(".toggle").style.visibility = "hidden";
+        document.querySelector(".footer").style.visibility = "hidden";
+      } else {
+        instaOverlay.style.display = "none";
+        document.getElementById("content").style.display = "block";
+        document.getElementById("title").style.visibility = "visible";
+        document.querySelector(".toggle").style.visibility = "visible";
+        document.querySelector(".footer").style.visibility = "visible";
+        render();
+      }
     }
 
     function render() {
+      if (lang === "insta") return; // Insta modda içerik yok
       document.getElementById("title").textContent = content[lang].title;
-
       const container = document.getElementById("content");
       container.innerHTML = "";
 
       content[lang].levels.forEach(level => {
         const div = document.createElement("div");
         div.className = "level";
-        div.inner
         div.innerHTML = `<h2>${level.title}</h2><p><em>${level.desc}</em></p><ul>${level.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`;
         container.appendChild(div);
       });
