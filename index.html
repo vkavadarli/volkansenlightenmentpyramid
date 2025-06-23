@@ -256,3 +256,17 @@
         const div = document.createElement("div");
         div.className = "level";
         div.inner
+        div.innerHTML = `<h2>${level.title}</h2><p><em>${level.desc}</em></p><ul>${level.bullets.map(b => `<li>${b}</li>`).join('')}</ul>`;
+        container.appendChild(div);
+      });
+
+      const testDiv = document.createElement("div");
+      testDiv.className = "test";
+      testDiv.innerHTML = `<h2>${lang === "tr" ? "🔍 Mini Test: Sen Hangi Seviyedesin?" : "🔍 Mini Test: What’s Your Level?"}</h2><ul>${content[lang].test.map(t => `<li>${t}</li>`).join('')}</ul>`;
+      container.appendChild(testDiv);
+    }
+
+    render();
+  </script>
+</body>
+</html>
